@@ -1,0 +1,44 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: app
+    build: .
+    volumes:
+      - ./application:/var/www
+    working_dir: /var/www/
+    environment:
+      PHP_IDE_CONFIG: "serverName=Docker"
+      XDEBUG_CONFIG: remote_host=192.168.31.77
+    networks:
+      - testing_net
+
+  db:
+    container_name: db
+    image: postgres:latest
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "5434:5432"
+    networks:
+      - testing_net
+
+  server:
+    container_name: server
+    image: nginx:alpine
+    working_dir: /var/www
+    volumes:
+      - ./application:/var/www
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - "8000:80"
+    networks:
+      - testing_net
+
+networks:
+  testing_net:
+    driver: bridge
