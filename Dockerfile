@@ -5,6 +5,27 @@ RUN apt update
 RUN apt install -y libzip-dev zip \
   && docker-php-ext-install zip
 
+# Install dependencies
+RUN apt-get install -y \
+    build-essential \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    locales \
+    zip \
+    jpegoptim optipng pngquant gifsicle \
+    vim \
+    unzip \
+    git \
+    curl \
+    libpq-dev
+
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install DB extensions
+RUN docker-php-ext-install pdo pdo_pgsql
+
 # Install & setup xDebug
 RUN pecl install xdebug-3.0.3
 RUN docker-php-ext-enable xdebug
