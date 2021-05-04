@@ -5,6 +5,6 @@
 .end
 
 # Composer
-.composer.lock
+composer.lock
 
 package-lock.json
