@@ -19,6 +19,10 @@ RUN apt-get install -y \
     git \
     curl \
     libpq-dev
+## NPM
+RUN apt-get install -y nodejs npm
+RUN npm install n -g
+RUN n stable
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*

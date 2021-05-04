@@ -36,6 +36,8 @@ services:
       - ./nginx:/etc/nginx/conf.d
     ports:
       - "8000:80"
+#      - "9001:9001"
+#      - "9003:9003"
     networks:
       - testing_net
 

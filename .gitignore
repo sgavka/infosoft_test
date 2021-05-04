@@ -3,3 +3,8 @@
 
 # Env
 .end
+
+# Composer
+.composer.lock
+
+package-lock.json

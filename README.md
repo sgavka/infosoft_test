@@ -17,3 +17,13 @@ To get your IP address: `hostname -I | awk '{print $1}'`
 
 ## Server name
 `http://localhost:8000`
+
+## Migrations
+
+1. `docker-compose run app php artisan migrate:install`
+2. `docker-compose run app php artisan migrate`
+
+## NPM (front)
+
+1. `docker-compose run app npm install`
+1. `docker-compose run app npm run dev`
