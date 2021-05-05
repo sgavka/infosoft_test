@@ -57,19 +57,19 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('account.enter') }}">{{ __('Top up balance') }}</a>
+                                <a class="nav-link" href="{{ route('transactions.form') }}">{{ __('Top up balance') }}</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('account.deposit') }}">{{ __('Create deposit') }}</a>
+                                <a class="nav-link" href="{{ route('deposits.form') }}">{{ __('Create deposit') }}</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('account.transactions') }}">{{ __('Transactions') }}</a>
+                                <a class="nav-link" href="{{ route('transactions') }}">{{ __('Transactions') }}</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('account.deposits') }}">{{ __('Deposits') }}</a>
+                                <a class="nav-link" href="{{ route('deposits') }}">{{ __('Deposits') }}</a>
                             </li>
 
                             <li class="nav-item dropdown">

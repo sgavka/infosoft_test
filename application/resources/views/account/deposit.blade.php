@@ -12,7 +12,7 @@
                             <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
 
-                        <form method="POST" action="{{ route('account.deposit') }}">
+                        <form method="POST" action="{{ route('deposits.form') }}">
                             @csrf
 
                             <div class="form-group row">

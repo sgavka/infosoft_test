@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\DepositController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,15 +28,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('account')->name('account.')->group(
-    static function () {
-        Route::get('/enter', [AccountController::class, 'showEnterView'])->name('enter');
-        Route::post('/enter', [AccountController::class, 'enter']);
+Route::get('/transactions', [TransactionController::class, 'transactions'])->name('transactions');
+Route::get('/transactions/enter', [TransactionController::class, 'showEnterView'])->name('transactions.form');
+Route::post('/transactions/enter', [TransactionController::class, 'enter'])->name('transactions.enter');
 
-        Route::get('/deposit', [AccountController::class, 'showDepositView'])->name('deposit');
-        Route::post('/deposit', [AccountController::class, 'deposit']);
-
-        Route::get('/transactions', [AccountController::class, 'transactions'])->name('transactions');
-        Route::get('/deposits', [AccountController::class, 'deposits'])->name('deposits');
-    }
-);
+Route::get('/deposits', [DepositController::class, 'deposits'])->name('deposits');
+Route::get('/deposits/create', [DepositController::class, 'showDepositView'])->name('deposits.form');
+Route::post('/deposits/create', [DepositController::class, 'create'])->name('deposit.create');

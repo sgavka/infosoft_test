@@ -27,7 +27,7 @@ class HomeController extends Controller
         /** @var Wallet $wallet */
         $wallet = auth()->user()->wallet();
         return view('home', [
-            'balance' => $wallet->balance,
+            'balance' => $wallet->balance ?? 0,
         ]);
     }
 }
