@@ -31,15 +31,11 @@ class AccrueDepositPercents extends Command
      */
     public function handle()
     {
-        while (true) {
-            $deposits = Deposit::allActive()->all();
+        $deposits = Deposit::allActive()->all();
 
-            /** @var Deposit $deposit */
-            foreach ($deposits as $deposit) {
-                $deposit->processPayout();
-            }
-
-            sleep(self::SLEEP_SECONDS);
+        /** @var Deposit $deposit */
+        foreach ($deposits as $deposit) {
+            $deposit->processPayout();
         }
 
         return 0;
